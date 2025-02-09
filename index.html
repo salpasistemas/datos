@@ -13,9 +13,9 @@
             --background-color: #f8f9fa;
             --text-color: #434343;
             --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             --transition-speed: 0.3s;
         }
-
         body {
             font-family: 'Titillium Web', sans-serif;
             margin: 0;
@@ -27,7 +27,6 @@
             flex-direction: column;
             line-height: 1.6;
         }
-
         header {
             background-color: var(--primary-color);
             padding: 1.25rem 2rem;
@@ -35,49 +34,49 @@
             justify-content: center;
             align-items: center;
         }
-
         .logo {
             height: 50px;
             width: 132px;
         }
-
         .header-title {
             color: white;
             font-size: 1.5rem;
             font-weight: 400;
             margin: 0;
         }
-
         .container {
             max-width: 90%;
             margin: 4rem auto;
             padding: 0 2rem;
             flex: 1;
         }
-
         .dashboard-container {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
         }
-
         .dashboard-item {
             background: white;
             border-radius: 8px;
             padding: 2rem;
             box-shadow: var(--card-shadow);
             text-align: left;
-            flex-basis: calc(25% - 2rem); /* Four cards per row */
+            flex-basis: calc(25% - 2rem);
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            top: 0;
         }
-
+        .dashboard-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover-shadow);
+        }
         .dashboard-title {
             font-size: 1.2rem;
             margin: 0 0 1.5rem 0;
             color: var(--text-color);
             font-weight: 600;
         }
-
         .dashboard-link {
             display: block;
             background-color: var(--primary-color);
@@ -89,38 +88,34 @@
             font-weight: 400;
             transition: background-color var(--transition-speed);
         }
-
         .dashboard-link:hover {
             background-color: var(--primary-hover);
         }
-
         footer {
             text-align: center;
             padding: 2rem;
             color: #666;
             font-size: 0.9rem;
         }
-
         footer a {
             color: var(--primary-color);
             text-decoration: none;
         }
-
         footer a:hover {
             text-decoration: underline;
         }
-
         @media (max-width: 768px) {
             .container {
                 margin: 2rem auto;
                 padding: 0 1rem;
             }
-
             .dashboard-item {
                 padding: 1.5rem;
-                flex-basis: calc(50% - 2rem); /* Two cards per row on smaller screens */
+                flex-basis: calc(50% - 2rem);
             }
-
+            .dashboard-item:hover {
+                transform: translateY(-5px);
+            }
             .header-title {
                 font-size: 1.25rem;
             }
@@ -131,7 +126,6 @@
     <header>
         <img src="logo.png" alt="Salpa Logo" class="logo">
     </header>
-
     <div class="container">
         <div class="dashboard-container">
             <div class="dashboard-item">
@@ -156,7 +150,6 @@
             </div>
         </div>
     </div>
-
     <footer>
         © 2025 — <a href="#">Salpa Datos</a> — #LaVidaEsAfuera
     </footer>
